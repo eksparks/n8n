@@ -1,17 +1,2 @@
-# nixpacks.toml
 [phases.setup]
-nixPkgs = ["nodejs", "yarn"]
-
-[phases.install]
-cmds = [
-  "corepack enable",
-  "yarn install --immutable"
-]
-
-[phases.build]
-cmds = [
-  "yarn build"
-]
-
-[start]
-cmd = "node packages/cli/bin/n8n"
+    nixPkgs = ['...', 'ffmpeg']
