@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["ffmpeg"]
+
+[phases.build]
+cmds = []
+
+[phases.start]
+cmds = ["n8n start"]
