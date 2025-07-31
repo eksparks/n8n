@@ -10,4 +10,4 @@ cmds = [
 ]
 
 [phases.start]
-cmd = "pnpm exec n8n start"
+cmd = "cd packages/cli/bin && ./n8n"
