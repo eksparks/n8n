@@ -1,15 +1,10 @@
 [phases.setup]
+aptPkgs = [
+  "ffmpeg"
+]
 nixPkgs = [
   "nodejs_22",
   "pnpm"
-]
-
-cmds = [
-  "curl -L https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz -o ffmpeg.tar.xz",
-  "tar -xf ffmpeg.tar.xz",
-  "ls -la",  # 👈 This will show us the actual folder name in the build logs
-  "# mv actual-folder-name/ffmpeg /usr/local/bin/ffmpeg",
-  "# chmod +x /usr/local/bin/ffmpeg"
 ]
 
 [phases.build]
