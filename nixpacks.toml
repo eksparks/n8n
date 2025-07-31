@@ -1,10 +1,10 @@
 [phases.setup]
-nixPkgs = ['nodejs_22', 'ffmpeg', 'pnpm', 'python311']
+nixPkgs = ["ffmpeg", "nodejs", "pnpm"]
 
 [phases.build]
 cmds = [
-  'pnpm install --filter n8n --recursive'
+  "pnpm install --frozen-lockfile"
 ]
 
 [phases.start]
-cmd = 'pnpm --filter n8n start'  # 👈 run from correct workspace
+cmd = "pnpm exec n8n start"
