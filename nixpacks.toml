@@ -1,8 +1,11 @@
 [phases.setup]
-nixPkgs = ["...", "ffmpeg"]
+nixPkgs = ['nodejs_22', 'ffmpeg', 'yarn', 'python311']
+cmds = [
+  'yarn global add n8n'  # 👈 ensures CLI is available
+]
 
 [phases.build]
-cmds = []
+cmds = ['yarn install --immutable']
 
-[start]
-cmd = "n8n start"
+[phases.start]
+cmd = 'n8n start'
