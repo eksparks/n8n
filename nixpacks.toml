@@ -1,11 +1,10 @@
 [phases.setup]
-# Install system dependencies: Node.js and FFmpeg
-nixPkgs = ["nodejs", "ffmpeg"]
+nixPkgs = ["nodejs", "ffmpeg", "corepack"]
+# Enable corepack to use pnpm
+cmds = ["corepack enable", "corepack prepare pnpm@latest --activate"]
 
 [phases.build]
-# Install dependencies and build your app
-cmds = ["yarn install", "yarn build"]
+cmds = ["pnpm install --frozen-lockfile", "pnpm build"]
 
 [start]
-# Run the app using Yarn's start script
-cmd = "yarn start"
+cmd = "pnpm start"
