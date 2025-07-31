@@ -1,14 +1,14 @@
 [phases.setup]
 nixPkgs = [
   "nodejs_22",
-  "pnpm"
+  "pnpm",
+  "findutils"
 ]
 
 cmds = [
   "curl -L https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz -o ffmpeg.tar.xz",
   "tar -xf ffmpeg.tar.xz",
-  "mv ffmpeg-*-amd64 ffmpeg-static",
-  "mv ffmpeg-static/ffmpeg /usr/local/bin/",
+  "FFMPEG_DIR=$(find . -type d -name 'ffmpeg-*amd64') && mv \"$FFMPEG_DIR/ffmpeg\" /usr/local/bin/",
   "chmod +x /usr/local/bin/ffmpeg"
 ]
 
