@@ -1,2 +1,12 @@
 [phases.setup]
-    nixPkgs = ['...', 'ffmpeg']
+nixPkgs = ["nodejs_22", "corepack"]
+aptPkgs = ["libvips"] # or any other system dependencies
+
+[phases.install]
+cmds = ["corepack enable", "corepack prepare pnpm@10.12.1 --activate", "pnpm install"]
+
+[phases.build]
+cmds = ["pnpm build:n8n"]
+
+[start]
+cmd = "pnpm start:default"
