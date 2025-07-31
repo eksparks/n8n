@@ -1,13 +1,11 @@
-[build]
-languages.node.version = "22.16.0"
-
 [phases.setup]
-nixPkgs = ["ffmpeg", "nodejs", "pnpm"]
+# Install system dependencies: Node.js and FFmpeg
+nixPkgs = ["nodejs", "ffmpeg"]
 
 [phases.build]
-cmds = [
-  "pnpm install --frozen-lockfile"
-]
+# Install dependencies and build your app
+cmds = ["yarn install", "yarn build"]
 
-[phases.start]
-cmd = "cd packages/cli/bin && ./n8n"
+[start]
+# Run the app using Yarn's start script
+cmd = "yarn start"
