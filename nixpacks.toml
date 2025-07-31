@@ -1,11 +1,10 @@
 [phases.setup]
-nixPkgs = ['nodejs_22', 'ffmpeg', 'yarn', 'python311']
-cmds = [
-  'yarn global add n8n'  # 👈 ensures CLI is available
-]
+nixPkgs = ['nodejs_22', 'ffmpeg', 'pnpm', 'python311']
 
 [phases.build]
-cmds = ['yarn install --immutable']
+cmds = [
+  'pnpm install --filter n8n --recursive'
+]
 
 [phases.start]
-cmd = 'n8n start'
+cmd = 'pnpm --filter n8n start'  # 👈 run from correct workspace
