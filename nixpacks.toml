@@ -1,10 +1,28 @@
-[phases.setup]
-nixPkgs = ["nodejs", "ffmpeg", "corepack"]
-# Enable corepack to use pnpm
-cmds = ["corepack enable", "corepack prepare pnpm@latest --activate"]
-
-[phases.build]
-cmds = ["pnpm install --frozen-lockfile", "pnpm build"]
+[build]
+builder = "NIXPACKS"
+buildCommand = """
+corepack enable
+corepack prepare pnpm@8.15.5 --activate || npm install -g pnpm@8.15.5
+pnpm install --frozen-lockfile || npm install
+"""
 
 [start]
+cmd = "pnpm start"
+
+[phases.setup]
+nixPkgs = [
+  "nodejs_20",
+  "ffmpeg",
+  "bash",
+  "curl",
+  "git"
+]
+
+[phases.install]
+cmds = ["pnpm install --frozen-lockfile || npm install"]
+
+[phases.build]
+cmds = []
+
+[phases.start]
 cmd = "pnpm start"
