@@ -7,8 +7,9 @@ nixPkgs = [
 cmds = [
   "curl -L https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz -o ffmpeg.tar.xz",
   "tar -xf ffmpeg.tar.xz",
-  "mv ffmpeg-6.0-amd64-static/ffmpeg /usr/local/bin/ffmpeg",
-  "chmod +x /usr/local/bin/ffmpeg"
+  "ls -la",  # 👈 This will show us the actual folder name in the build logs
+  "# mv actual-folder-name/ffmpeg /usr/local/bin/ffmpeg",
+  "# chmod +x /usr/local/bin/ffmpeg"
 ]
 
 [phases.build]
